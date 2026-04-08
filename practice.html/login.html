@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Login Form</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f2f2ff;
+      }
+
+      .login-box {
+        width: 360px;
+        padding: 30px;
+        background: linear-gradient(135deg, #7b8df5, #5a6cf0);
+        border-radius: 16px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .login-box h2 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 25px;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-size: 14px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #1e40af;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      /* Boy image */
+      .character {
+        position: absolute;
+        bottom: 10px;
+        left: -120px;
+        width: 90px;
+        display: none;
+      }
+
+      /* Walking animation */
+      .character.walk {
+        display: block;
+        animation: walk 2.5s linear forwards;
+      }
+
+      @keyframes walk {
+        from {
+          left: -120px;
+        }
+        to {
+          left: 260px; /* right side of box */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-box">
+      <h2>Register now</h2>
+
+      <input type="text" id="name" placeholder="Name" />
+      <input type="text" placeholder="Surname" />
+      <input type="email" placeholder="Email address" />
+
+      <button>Next</button>
+
+      <!-- Boy Image -->
+      <img src="walkingboy.gif" id="character" class="character" alt="boy" />
+    </div>
+
+    <script>
+      const nameInput = document.getElementById("name");
+      const boy = document.getElementById("character");
+
+      let walking = false;
+
+      nameInput.addEventListener("input", () => {
+        if (nameInput.value.trim() !== "" && !walking) {
+          walking = true;
+
+          boy.classList.remove("walk"); // reset animation
+          void boy.offsetWidth; // force reflow
+          boy.classList.add("walk");
+        }
+
+        if (nameInput.value.trim() === "") {
+          boy.classList.remove("walk");
+          boy.style.left = "-120px";
+          walking = false;
+        }
+      });
+    </script>
+  </body>
+</html>

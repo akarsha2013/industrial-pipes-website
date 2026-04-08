@@ -1,0 +1,13 @@
+.character {
+  position: absolute;
+  bottom: 20px;
+  left: -100px;
+  width: 80px;
+  display: none;
+  transition: left 0.5s ease;
+}
+
+.character.show {
+  display: block;
+  left: 20px;
+}

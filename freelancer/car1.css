@@ -1,0 +1,287 @@
+/* 🔥 GLOBAL FIX */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* FIXES NAVBAR OVERFLOW */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding-top: 70px; /* prevents navbar overlap */
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: linear-gradient(90deg, #000000, #434343);
+  color: white;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* NAV LINKS */
+.navbar nav {
+  display: flex;
+  gap: 15px; /* reduced gap to avoid overflow */
+  align-items: center;
+  flex-wrap: wrap; /* prevents Contact going outside */
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.navbar a:hover {
+  color: orange;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* ================= HERO ================= */
+.hero {
+  height: 100vh;
+  position: relative;
+  overflow: hidden; /* FIX alignment */
+}
+
+/* CAROUSEL */
+.carousel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* HERO CONTENT CENTER FIX */
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* PERFECT CENTER */
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  font-size: 18px;
+}
+
+/* ================= SECTION ================= */
+section {
+  padding: 60px 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ================= FILTER ================= */
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.filter-container input,
+.filter-container select {
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* ================= VEHICLES ================= */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.08) translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.2);
+}
+
+.card h3,
+.card p {
+  padding: 10px;
+}
+
+/* ================= REVIEWS ================= */
+#reviews {
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.review-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.review {
+  display: none;
+  font-size: 18px;
+}
+
+.review.active {
+  display: block;
+}
+
+.review h4 {
+  color: orange;
+}
+
+/* ================= LOCATION ================= */
+#location {
+  text-align: center;
+}
+
+.location-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* ================= CONTACT ================= */
+#contact {
+  background: black;
+  color: white;
+}
+
+.contact-form {
+  width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+button {
+  padding: 10px;
+  background: orange;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================= 📱 MOBILE ================= */
+@media (max-width: 768px) {
+  /* NAVBAR */
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .navbar nav {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: black;
+    flex-direction: column;
+    width: 200px;
+    display: none;
+    padding: 20px;
+  }
+
+  .navbar nav.active {
+    display: flex;
+  }
+
+  .navbar a {
+    margin: 10px 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  /* HERO */
+  .hero {
+    height: 70vh; /* FIX for mobile */
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  /* FILTER */
+  .filter-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* CARDS */
+  .card {
+    width: 90%;
+  }
+
+  /* FORM */
+  .contact-form {
+    width: 90%;
+  }
+}
